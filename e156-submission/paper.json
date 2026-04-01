@@ -1,0 +1,156 @@
+{
+  "title": "EvidenceEntropy: Information-Theoretic Quantification of Trust-Significance Dependence Across Cochrane Meta-Analyses",
+  "journal_target": "F1000Research / Systematic Reviews",
+  "word_limit": 156,
+  "format": "E156",
+  "corpus": {
+    "n_meta_analyses": 6229,
+    "n_domains": 14,
+    "data_sources": [
+      "C:/Models/EvidenceScore/results/scores.csv",
+      "C:/Models/ActionableEvidence/results/verdicts.csv",
+      "C:/Models/TrustGate/data/review_groups.csv"
+    ]
+  },
+  "metrics": {
+    "h_trust_bits": 2.1431,
+    "h_trust_max_bits": 2.585,
+    "h_trust_relative": 0.8291,
+    "h_sig_bits": 0.5909,
+    "h_sig_given_trust_bits": 0.5536,
+    "mi_bits": 0.0373,
+    "nmi": 0.0331,
+    "sig_rate": 0.1426,
+    "kl_trust_vs_naive_pq": 0.6106,
+    "kl_trust_vs_naive_qp": 0.5319
+  },
+  "grade_distribution": {
+    "A+": 71,
+    "A": 674,
+    "B": 1349,
+    "C": 1938,
+    "D": 1926,
+    "F": 271
+  },
+  "domain_metrics": {
+    "Cancer": {
+      "n": 235,
+      "mi_bits": 0.113,
+      "nmi": 0.0977,
+      "h_trust": 2.0948,
+      "h_sig": 0.6384,
+      "sig_rate": 0.1617
+    },
+    "Cardiovascular": {
+      "n": 640,
+      "mi_bits": 0.0832,
+      "nmi": 0.0701,
+      "h_trust": 2.2376,
+      "h_sig": 0.6291,
+      "sig_rate": 0.1578
+    },
+    "Dermatology": {
+      "n": 15,
+      "mi_bits": 0.2491,
+      "nmi": 0.253,
+      "h_trust": 1.1589,
+      "h_sig": 0.8366,
+      "sig_rate": 0.2667
+    },
+    "Diabetes": {
+      "n": 549,
+      "mi_bits": 0.0884,
+      "nmi": 0.0671,
+      "h_trust": 2.2536,
+      "h_sig": 0.7707,
+      "sig_rate": 0.2259
+    },
+    "Gastrointestinal": {
+      "n": 112,
+      "mi_bits": 0.1716,
+      "nmi": 0.116,
+      "h_trust": 2.3477,
+      "h_sig": 0.9325,
+      "sig_rate": 0.3482
+    },
+    "Hypertension": {
+      "n": 1064,
+      "mi_bits": 0.0359,
+      "nmi": 0.0366,
+      "h_trust": 2.0536,
+      "h_sig": 0.4678,
+      "sig_rate": 0.0996
+    },
+    "Infection": {
+      "n": 415,
+      "mi_bits": 0.0258,
+      "nmi": 0.0262,
+      "h_trust": 1.8568,
+      "h_sig": 0.5238,
+      "sig_rate": 0.1181
+    },
+    "Mental_health": {
+      "n": 703,
+      "mi_bits": 0.02,
+      "nmi": 0.0185,
+      "h_trust": 2.1172,
+      "h_sig": 0.552,
+      "sig_rate": 0.128
+    },
+    "Neurological": {
+      "n": 27,
+      "mi_bits": 0.3535,
+      "nmi": 0.3117,
+      "h_trust": 1.8609,
+      "h_sig": 0.6913,
+      "sig_rate": 0.1852
+    },
+    "Other": {
+      "n": 1340,
+      "mi_bits": 0.0218,
+      "nmi": 0.0213,
+      "h_trust": 2.0065,
+      "h_sig": 0.5212,
+      "sig_rate": 0.1172
+    },
+    "Pain": {
+      "n": 380,
+      "mi_bits": 0.0216,
+      "nmi": 0.0163,
+      "h_trust": 2.1321,
+      "h_sig": 0.8195,
+      "sig_rate": 0.2553
+    },
+    "Pregnancy": {
+      "n": 377,
+      "mi_bits": 0.0567,
+      "nmi": 0.056,
+      "h_trust": 2.1018,
+      "h_sig": 0.488,
+      "sig_rate": 0.1061
+    },
+    "Renal": {
+      "n": 13,
+      "mi_bits": 0.0,
+      "nmi": 0.0,
+      "h_trust": 1.8843,
+      "h_sig": 0.0,
+      "sig_rate": 0.0
+    },
+    "Respiratory": {
+      "n": 359,
+      "mi_bits": 0.0744,
+      "nmi": 0.0735,
+      "h_trust": 2.1024,
+      "h_sig": 0.4873,
+      "sig_rate": 0.1058
+    }
+  },
+  "key_findings": [
+    "Overall MI = 0.0373 bits (NMI = 0.0331): trust and significance share modest but non-zero information across all domains.",
+    "H(Trust) = 2.1431 bits (82.9% of theoretical maximum), indicating substantial grade diversity.",
+    "Neurological domain has highest NMI = 0.3117 (n=27), suggesting trust is most predictive of significance there.",
+    "Renal domain shows MI ~ 0, indicating grade is uninformative about significance in that domain (n=13)."
+  ],
+  "method": "Shannon entropy H(X)=-sum(p_i*log2(p_i)); KL divergence D_KL(P||Q)=sum(P_i*log2(P_i/Q_i)); MI computed from 6x2 contingency table (grade x significant); NMI=MI/sqrt(H(Trust)*H(Sig)); all per domain."
+}
