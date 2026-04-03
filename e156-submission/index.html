@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EvidenceEntropy: Information-Theoretic Trust Analysis — E156</title>
+  <title>E156 Interactive Bundle</title>
   <style>
     :root {
       --bg: #f6f3ee;
@@ -914,311 +914,57 @@
 
   <script>
     const E156_ARTICLE = {
-  "title": "EvidenceEntropy: Information-Theoretic Quantification of Trust-Significance Dependence Across Cochrane Meta-Analyses",
-  "type": "information-theory",
-  "summary": "Information-theoretic analysis of 6,229 Cochrane meta-analyses: MI = 0.0373 bits (NMI = 0.0331) linking trust grade to significance across 14 clinical domains.",
-  "body": "Trust grade and statistical significance are the two most-cited arbiters of meta-analytic credibility, yet their information-theoretic relationship has never been quantified across a large open-access corpus. We applied Shannon entropy, KL divergence, mutual information (MI), conditional entropy, and normalized MI (NMI) to 6,229 Cochrane meta-analyses spanning 14 clinical domains, linking GRADE-style trust grades (A+–F) with binary significance verdicts. Overall grade entropy was 2.143 bits (83% of the log2(6) = 2.585-bit maximum), indicating substantial grade diversity. Significance entropy was 0.591 bits (sig rate 14.3%), leaving only 0.554 bits conditional on trust grade. Overall MI was 0.0373 bits (NMI = 0.0331), confirming a statistically modest but non-zero dependence across the whole corpus. Neurological trials showed highest NMI = 0.312 (n = 27), suggesting trust grade is most informative about significance in specialty-specific domains. These information-theoretic baselines quantify what trust grades reveal about significance and establish a reproducible framework for evidence cartography.",
-  "date": "2026-04-01",
-  "version": "v1.0",
-  "study_count": 6229,
-  "participant_count": "6,229 meta-analyses",
-  "primary_estimand": "MI = 0.0373 bits; NMI = 0.0331",
-  "certainty": "Computational (open data)",
-  "app": "EvidenceEntropy v1.0",
-  "data": "EvidenceScore + ActionableEvidence + TrustGate (Cochrane open-access)",
-  "code": "C:\\Models\\EvidenceEntropy\\entropy_engine.py",
-  "doi": null,
-  "protocol": null,
-  "source_article": null,
-  "search_strategy": {
-    "summary": "Re-analysis of existing Cochrane open-access datasets: EvidenceScore (GRADE trust grades), ActionableEvidence (significance verdicts), and TrustGate (domain classification). No new search was performed.",
-    "databases": [
-      "EvidenceScore",
-      "ActionableEvidence",
-      "TrustGate"
-    ],
-    "registers": [
-      "Cochrane Library"
-    ],
-    "filters": [
-      "Open access",
-      "Cochrane systematic reviews"
-    ],
-    "date_range": "Up to March 2026",
-    "last_searched": "2026-04-01"
-  },
-  "prisma": {
-    "identified": 6229,
-    "identified_detail": "Meta-analyses with trust grade and significance verdict",
-    "screened": 6229,
-    "screened_detail": "All passed inner-join on ma_id",
-    "full_text_assessed": 6229,
-    "included": 6229,
-    "included_detail": "All 6,229 used in information-theoretic analysis"
-  },
-  "analysis_modules": [
+  "title": "EvidenceEntropy: Information-Theoretic Quantification of Trust-Significance Dependence in Cochrane Meta-Analyses",
+  "body": "How much information does knowing a meta-analysis trust grade provide about whether its finding is statistically significant? We computed Shannon entropy, mutual information, and Kullback-Leibler divergence for 6,229 Cochrane meta-analyses across 14 clinical domains, treating trust grade as a six-level categorical variable and significance as binary. Information measures were derived from empirical contingency tables with normalized mutual information providing a scale-free comparison metric. Overall mutual information was 0.037 bits with normalized mutual information of 0.033, indicating that trust grades carry modest but non-zero predictive information about significance status. Neurological meta-analyses showed the highest normalized mutual information at 0.312 while renal showed near-zero values, and the Kullback-Leibler divergence between trust-weighted and naive significance distributions was 0.611 bits overall. Trust grade provides limited but detectable information gain over naive significance assessment, with marked variation across clinical specialties. These measures assume discrete grade categories and may underestimate dependence present in the continuous trust score.",
+  "sentences": [
     {
-      "short_label": "Shannon H",
-      "title": "Shannon Entropy — Grade Distribution",
-      "summary": "H(Trust) = 2.1431 bits, or 82.9% of the theoretical maximum log2(6) = 2.5850 bits. High entropy indicates the corpus spans all trust grades with no single dominant category.",
-      "method": "H(X) = -sum(p_i * log2(p_i)) applied to the 6-grade (A+,A,B,C,D,F) distribution.",
-      "result": "H(Trust) = 2.1431 bits | H(Sig) = 0.5909 bits | H(Sig|Trust) = 0.5536 bits",
-      "interpretation": "Trust entropy is 83% of maximum, showing high grade diversity. Significance entropy (0.5909 bits) drops to 0.5536 bits when conditioned on trust, a reduction of 6.3%.",
-      "items": [
-        {
-          "label": "Grade distribution",
-          "value": "A+: 71 | A: 674 | B: 1,349 | C: 1,938 | D: 1,926 | F: 271"
-        }
-      ]
+      "role": "Question",
+      "text": "How much information does knowing a meta-analysis trust grade provide about whether its finding is statistically significant?"
     },
     {
-      "short_label": "KL Divergence",
-      "title": "KL Divergence — Trust-Weighted vs Naive Significance",
-      "summary": "We compare P = per-grade significance rates (trust-weighted) with Q = naive grade-blind significance rate applied uniformly.",
-      "method": "D_KL(P||Q) = sum(P_i * log2(P_i/Q_i)); zero-stabilised with eps=1e-12.",
-      "result": "D_KL(P||Q) = 0.6106 bits | D_KL(Q||P) = 0.5319 bits",
-      "interpretation": "The trust-weighted distribution diverges 0.6106 bits from the naive uniform assumption, confirming that knowing a study's trust grade does shift the expected significance probability away from the corpus average."
+      "role": "Dataset",
+      "text": "We computed Shannon entropy, mutual information, and Kullback-Leibler divergence for 6,229 Cochrane meta-analyses across 14 clinical domains, treating trust grade as a six-level categorical variable and significance as binary."
     },
     {
-      "short_label": "Mutual Info",
-      "title": "Mutual Information — I(Trust; Significance)",
-      "summary": "Overall MI = 0.0373 bits (NMI = 0.0331). Computed from a 6x2 contingency table (grade x significant).",
-      "method": "I(T;S) = H(S) - H(S|T) = sum_{t,s} p(t,s) * log2(p(t,s)/(p(t)*p(s)))",
-      "result": "MI = 0.0373 bits | NMI = 0.0331",
-      "interpretation": "NMI of 0.033 is modest but non-zero, meaning trust grades carry systematic information about significance. Top domains: Neurological (NMI=0.312), Dermatology (NMI=0.253), Gastrointestinal (NMI=0.116).",
-      "items": [
-        {
-          "label": "Neurological",
-          "value": "n=27  MI=0.3535  NMI=0.3117  sig=18.5%"
-        },
-        {
-          "label": "Dermatology",
-          "value": "n=15  MI=0.2491  NMI=0.2530  sig=26.7%"
-        },
-        {
-          "label": "Gastrointestinal",
-          "value": "n=112  MI=0.1716  NMI=0.1160  sig=34.8%"
-        },
-        {
-          "label": "Cancer",
-          "value": "n=235  MI=0.1130  NMI=0.0977  sig=16.2%"
-        },
-        {
-          "label": "Respiratory",
-          "value": "n=359  MI=0.0744  NMI=0.0735  sig=10.6%"
-        },
-        {
-          "label": "Cardiovascular",
-          "value": "n=640  MI=0.0832  NMI=0.0701  sig=15.8%"
-        },
-        {
-          "label": "Diabetes",
-          "value": "n=549  MI=0.0884  NMI=0.0671  sig=22.6%"
-        },
-        {
-          "label": "Pregnancy",
-          "value": "n=377  MI=0.0567  NMI=0.0560  sig=10.6%"
-        },
-        {
-          "label": "Hypertension",
-          "value": "n=1,064  MI=0.0359  NMI=0.0366  sig=10.0%"
-        },
-        {
-          "label": "Infection",
-          "value": "n=415  MI=0.0258  NMI=0.0262  sig=11.8%"
-        },
-        {
-          "label": "Other",
-          "value": "n=1,340  MI=0.0218  NMI=0.0213  sig=11.7%"
-        },
-        {
-          "label": "Mental_health",
-          "value": "n=703  MI=0.0200  NMI=0.0185  sig=12.8%"
-        },
-        {
-          "label": "Pain",
-          "value": "n=380  MI=0.0216  NMI=0.0163  sig=25.5%"
-        },
-        {
-          "label": "Renal",
-          "value": "n=13  MI=0.0000  NMI=0.0000  sig=0.0%"
-        }
-      ]
+      "role": "Method",
+      "text": "Information measures were derived from empirical contingency tables with normalized mutual information providing a scale-free comparison metric."
     },
     {
-      "short_label": "Cond. Entropy",
-      "title": "Conditional Entropy H(Sig | Trust)",
-      "summary": "H(Sig|Trust) = 0.5536 bits vs H(Sig) = 0.5909 bits. The information reduction is MI = H(Sig) - H(Sig|Trust).",
-      "method": "H(Y|X) = -sum_x p(x) * sum_y p(y|x) * log2(p(y|x)). First axis = trust grade (6 levels); second axis = significant (binary).",
-      "result": "H(Sig|Trust) = 0.5536 bits",
-      "interpretation": "After knowing the trust grade, residual uncertainty in significance is 0.5536 bits — only 6.3% less than the marginal H(Sig). Trust is a weak but non-trivial predictor."
+      "role": "Primary result",
+      "text": "Overall mutual information was 0.037 bits with normalized mutual information of 0.033, indicating that trust grades carry modest but non-zero predictive information about significance status."
+    },
+    {
+      "role": "Robustness",
+      "text": "Neurological meta-analyses showed the highest normalized mutual information at 0.312 while renal showed near-zero values, and the Kullback-Leibler divergence between trust-weighted and naive significance distributions was 0.611 bits overall."
+    },
+    {
+      "role": "Interpretation",
+      "text": "Trust grade provides limited but detectable information gain over naive significance assessment, with marked variation across clinical specialties."
+    },
+    {
+      "role": "Boundary",
+      "text": "These measures assume discrete grade categories and may underestimate dependence present in the continuous trust score."
     }
   ],
-  "studies": [
-    {
-      "label": "Neurological",
-      "upper": "18.5%",
-      "weight": "H(T)=1.861",
-      "sample": "n=27",
-      "intervention": "0.3535",
-      "comparator": "0.3117"
-    },
-    {
-      "label": "Dermatology",
-      "upper": "26.7%",
-      "weight": "H(T)=1.159",
-      "sample": "n=15",
-      "intervention": "0.2491",
-      "comparator": "0.2530"
-    },
-    {
-      "label": "Gastrointestinal",
-      "upper": "34.8%",
-      "weight": "H(T)=2.348",
-      "sample": "n=112",
-      "intervention": "0.1716",
-      "comparator": "0.1160"
-    },
-    {
-      "label": "Cancer",
-      "upper": "16.2%",
-      "weight": "H(T)=2.095",
-      "sample": "n=235",
-      "intervention": "0.1130",
-      "comparator": "0.0977"
-    },
-    {
-      "label": "Respiratory",
-      "upper": "10.6%",
-      "weight": "H(T)=2.102",
-      "sample": "n=359",
-      "intervention": "0.0744",
-      "comparator": "0.0735"
-    },
-    {
-      "label": "Cardiovascular",
-      "upper": "15.8%",
-      "weight": "H(T)=2.238",
-      "sample": "n=640",
-      "intervention": "0.0832",
-      "comparator": "0.0701"
-    },
-    {
-      "label": "Diabetes",
-      "upper": "22.6%",
-      "weight": "H(T)=2.254",
-      "sample": "n=549",
-      "intervention": "0.0884",
-      "comparator": "0.0671"
-    },
-    {
-      "label": "Pregnancy",
-      "upper": "10.6%",
-      "weight": "H(T)=2.102",
-      "sample": "n=377",
-      "intervention": "0.0567",
-      "comparator": "0.0560"
-    },
-    {
-      "label": "Hypertension",
-      "upper": "10.0%",
-      "weight": "H(T)=2.054",
-      "sample": "n=1,064",
-      "intervention": "0.0359",
-      "comparator": "0.0366"
-    },
-    {
-      "label": "Infection",
-      "upper": "11.8%",
-      "weight": "H(T)=1.857",
-      "sample": "n=415",
-      "intervention": "0.0258",
-      "comparator": "0.0262"
-    },
-    {
-      "label": "Other",
-      "upper": "11.7%",
-      "weight": "H(T)=2.006",
-      "sample": "n=1,340",
-      "intervention": "0.0218",
-      "comparator": "0.0213"
-    },
-    {
-      "label": "Mental_health",
-      "upper": "12.8%",
-      "weight": "H(T)=2.117",
-      "sample": "n=703",
-      "intervention": "0.0200",
-      "comparator": "0.0185"
-    },
-    {
-      "label": "Pain",
-      "upper": "25.5%",
-      "weight": "H(T)=2.132",
-      "sample": "n=380",
-      "intervention": "0.0216",
-      "comparator": "0.0163"
-    },
-    {
-      "label": "Renal",
-      "upper": "0.0%",
-      "weight": "H(T)=1.884",
-      "sample": "n=13",
-      "intervention": "0.0000",
-      "comparator": "0.0000"
-    }
-  ],
-  "primary_plot": {
-    "reference": 0,
-    "log_scale": false,
-    "pooled": {
-      "label": "Overall MI",
-      "effect": 0.0373,
-      "lower": 0.0,
-      "upper": 0.3535
-    }
+  "wordCount": 151,
+  "sentenceCount": 7,
+  "outsideNote": {
+    "type": "methods",
+    "primary_estimand": "Mutual information (bits)",
+    "app": "EvidenceEntropy v1.0",
+    "data": "6,229 MAs from 501 Cochrane reviews",
+    "code": "C:\\Models\\EvidenceEntropy",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-04-01",
+    "certainty": "moderate",
+    "validationStatus": "PASS"
   },
-  "validation": {
-    "checks": [
-      {
-        "ok": true,
-        "name": "25/25 unit tests pass",
-        "detail": "python -m pytest tests/test_entropy.py -v"
-      },
-      {
-        "ok": true,
-        "name": "H(Trust) <= log2(6)",
-        "detail": "2.1431 <= 2.5850"
-      },
-      {
-        "ok": true,
-        "name": "MI = H(Sig) - H(Sig|Trust)",
-        "detail": "0.0373 = 0.5909 - 0.5536"
-      },
-      {
-        "ok": true,
-        "name": "NMI in [0, 1]",
-        "detail": "NMI = 0.0331"
-      },
-      {
-        "ok": true,
-        "name": "Exactly 14 domains",
-        "detail": "Neurological, Dermatology, Cancer, ... (14 total)"
-      },
-      {
-        "ok": true,
-        "name": "6,229 MA inner-join matched",
-        "detail": "scores x verdicts x groups"
-      },
-      {
-        "ok": true,
-        "name": "Body <= 156 words",
-        "detail": "149 words"
-      }
-    ]
-  },
-  "review": null,
-  "review_summary": null
+  "meta": {
+    "created": "2026-04-01",
+    "valid": true,
+    "schemaVersion": "0.2"
+  }
 };
 
     function el(tag, className, text) {
