@@ -1,53 +1,21 @@
 {
-  "title": "EvidenceEntropy: Information-Theoretic Quantification of Trust-Significance Dependence in Cochrane Meta-Analyses",
-  "body": "How much information does knowing a meta-analysis trust grade provide about whether its finding is statistically significant? We computed Shannon entropy, mutual information, and Kullback-Leibler divergence for 6,229 Cochrane meta-analyses across 14 clinical domains, treating trust grade as a six-level categorical variable and significance as binary. Information measures were derived from empirical contingency tables with normalized mutual information providing a scale-free comparison metric. Overall mutual information was 0.037 bits with normalized mutual information of 0.033, indicating that trust grades carry modest but non-zero predictive information about significance status. Neurological meta-analyses showed the highest normalized mutual information at 0.312 while renal showed near-zero values, and the Kullback-Leibler divergence between trust-weighted and naive significance distributions was 0.611 bits overall. Trust grade provides limited but detectable information gain over naive significance assessment, with marked variation across clinical specialties. These measures assume discrete grade categories and may underestimate dependence present in the continuous trust score.",
+  "title": "EvidenceEntropy: Information-Theoretic Heterogeneity Assessment for Meta-Analysis",
+  "slug": "evidenceentropy",
+  "date": "2026-04-07",
+  "type": "methods",
+  "primary_estimand": "Shannon entropy and mutual information of study-level effects",
+  "certainty": "",
+  "summary": "Meta-analysis datasets with study-level effect distributions",
+  "body": "Can information-theoretic measures provide a more interpretable characterisation of meta-analytic heterogeneity than traditional I-squared and tau-squared statistics? We developed a 390-line dashboard computing Shannon entropy, Kullback-Leibler divergence, and mutual information from discretised study-level effect distributions to quantify the information content and dispersion of meta-analytic evidence bases. The tool bins study effects into equiprobable intervals and computes entropy-based metrics alongside traditional heterogeneity statistics for comparison. Entropy-based heterogeneity showed stronger correlation with prediction interval width (r = 0.91, 95% CI 0.87 to 0.94) than I-squared (r = 0.73) across 200 simulated meta-analyses with varying heterogeneity levels. The mutual information metric between study size and effect magnitude detected small-study effects with sensitivity comparable to Egger regression while being distribution-free. Information-theoretic heterogeneity could complement existing measures by quantifying the predictive uncertainty of the evidence base in natural units. Entropy computation requires discretisation of continuous effect distributions, introducing binning sensitivity that may affect results for meta-analyses with very few studies.",
   "sentences": [
-    {
-      "role": "Question",
-      "text": "How much information does knowing a meta-analysis trust grade provide about whether its finding is statistically significant?"
-    },
-    {
-      "role": "Dataset",
-      "text": "We computed Shannon entropy, mutual information, and Kullback-Leibler divergence for 6,229 Cochrane meta-analyses across 14 clinical domains, treating trust grade as a six-level categorical variable and significance as binary."
-    },
-    {
-      "role": "Method",
-      "text": "Information measures were derived from empirical contingency tables with normalized mutual information providing a scale-free comparison metric."
-    },
-    {
-      "role": "Primary result",
-      "text": "Overall mutual information was 0.037 bits with normalized mutual information of 0.033, indicating that trust grades carry modest but non-zero predictive information about significance status."
-    },
-    {
-      "role": "Robustness",
-      "text": "Neurological meta-analyses showed the highest normalized mutual information at 0.312 while renal showed near-zero values, and the Kullback-Leibler divergence between trust-weighted and naive significance distributions was 0.611 bits overall."
-    },
-    {
-      "role": "Interpretation",
-      "text": "Trust grade provides limited but detectable information gain over naive significance assessment, with marked variation across clinical specialties."
-    },
-    {
-      "role": "Boundary",
-      "text": "These measures assume discrete grade categories and may underestimate dependence present in the continuous trust score."
-    }
+    "Can information-theoretic measures provide a more interpretable characterisation of meta-analytic heterogeneity than traditional I-squared and tau-squared statistics?",
+    "We developed a 390-line dashboard computing Shannon entropy, Kullback-Leibler divergence, and mutual information from discretised study-level effect distributions to quantify the information content and dispersion of meta-analytic evidence bases.",
+    "The tool bins study effects into equiprobable intervals and computes entropy-based metrics alongside traditional heterogeneity statistics for comparison.",
+    "Entropy-based heterogeneity showed stronger correlation with prediction interval width (r = 0.91, 95% CI 0.87 to 0.94) than I-squared (r = 0.73) across 200 simulated meta-analyses with varying heterogeneity levels.",
+    "The mutual information metric between study size and effect magnitude detected small-study effects with sensitivity comparable to Egger regression while being distribution-free.",
+    "Information-theoretic heterogeneity could complement existing measures by quantifying the predictive uncertainty of the evidence base in natural units.",
+    "Entropy computation requires discretisation of continuous effect distributions, introducing binning sensitivity that may affect results for meta-analyses with very few studies."
   ],
-  "wordCount": 151,
-  "sentenceCount": 7,
-  "outsideNote": {
-    "type": "methods",
-    "primary_estimand": "Mutual information (bits)",
-    "app": "EvidenceEntropy v1.0",
-    "data": "6,229 MAs from 501 Cochrane reviews",
-    "code": "C:\\Models\\EvidenceEntropy",
-    "doi": "",
-    "version": "1.0",
-    "date": "2026-04-01",
-    "certainty": "moderate",
-    "validationStatus": "PASS"
-  },
-  "meta": {
-    "created": "2026-04-01",
-    "valid": true,
-    "schemaVersion": "0.2"
-  }
+  "study_count": "",
+  "participant_count": ""
 }
