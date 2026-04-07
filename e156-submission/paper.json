@@ -1,21 +1,61 @@
 {
-  "title": "EvidenceEntropy: Information-Theoretic Heterogeneity Assessment for Meta-Analysis",
+  "title": "Untitled E156",
   "slug": "evidenceentropy",
-  "date": "2026-04-07",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "body": "",
+  "word_count": 0,
+  "sentence_count": 0,
+  "sentences": [],
+  "notes": {
+    "code": "https://github.com/mahmood726-cyber/evidenceentropy"
+  },
   "type": "methods",
-  "primary_estimand": "Shannon entropy and mutual information of study-level effects",
-  "certainty": "",
-  "summary": "Meta-analysis datasets with study-level effect distributions",
-  "body": "Can information-theoretic measures provide a more interpretable characterisation of meta-analytic heterogeneity than traditional I-squared and tau-squared statistics? We developed a 390-line dashboard computing Shannon entropy, Kullback-Leibler divergence, and mutual information from discretised study-level effect distributions to quantify the information content and dispersion of meta-analytic evidence bases. The tool bins study effects into equiprobable intervals and computes entropy-based metrics alongside traditional heterogeneity statistics for comparison. Entropy-based heterogeneity showed stronger correlation with prediction interval width (r = 0.91, 95% CI 0.87 to 0.94) than I-squared (r = 0.73) across 200 simulated meta-analyses with varying heterogeneity levels. The mutual information metric between study size and effect magnitude detected small-study effects with sensitivity comparable to Egger regression while being distribution-free. Information-theoretic heterogeneity could complement existing measures by quantifying the predictive uncertainty of the evidence base in natural units. Entropy computation requires discretisation of continuous effect distributions, introducing binning sensitivity that may affect results for meta-analyses with very few studies.",
-  "sentences": [
-    "Can information-theoretic measures provide a more interpretable characterisation of meta-analytic heterogeneity than traditional I-squared and tau-squared statistics?",
-    "We developed a 390-line dashboard computing Shannon entropy, Kullback-Leibler divergence, and mutual information from discretised study-level effect distributions to quantify the information content and dispersion of meta-analytic evidence bases.",
-    "The tool bins study effects into equiprobable intervals and computes entropy-based metrics alongside traditional heterogeneity statistics for comparison.",
-    "Entropy-based heterogeneity showed stronger correlation with prediction interval width (r = 0.91, 95% CI 0.87 to 0.94) than I-squared (r = 0.73) across 200 simulated meta-analyses with varying heterogeneity levels.",
-    "The mutual information metric between study size and effect magnitude detected small-study effects with sensitivity comparable to Egger regression while being distribution-free.",
-    "Information-theoretic heterogeneity could complement existing measures by quantifying the predictive uncertainty of the evidence base in natural units.",
-    "Entropy computation requires discretisation of continuous effect distributions, introducing binning sensitivity that may affect results for meta-analyses with very few studies."
-  ],
-  "study_count": "",
-  "participant_count": ""
+  "primary_estimand": "",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": false,
+        "detail": "Found 0 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 0 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": false,
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": false,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": false,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
 }
