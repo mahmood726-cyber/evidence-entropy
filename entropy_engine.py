@@ -9,6 +9,7 @@ significance, stratified by 14 Cochrane review domains.
 import csv
 import math
 from collections import Counter, defaultdict
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 
@@ -19,9 +20,23 @@ from typing import Dict, List, Optional, Tuple
 GRADE_ORDER = ["A+", "A", "B", "C", "D", "F"]
 H_MAX = math.log2(6)   # 2.584962500721156 bits  (uniform over 6 grades)
 
-SCORES_PATH   = r"C:\Models\EvidenceScore\results\scores.csv"
-VERDICTS_PATH = r"C:\Models\ActionableEvidence\results\verdicts.csv"
-GROUPS_PATH   = r"C:\Models\TrustGate\data\review_groups.csv"
+def _model_file(model_name: str, *parts: str) -> str:
+    """Resolve sibling model artifacts under either WSL or Windows paths."""
+    models_roots = (
+        Path(__file__).resolve().parents[1],
+        Path("/mnt/c/Models"),
+        Path("C:/Models"),
+    )
+    for root in models_roots:
+        candidate = root / model_name / Path(*parts)
+        if candidate.exists():
+            return str(candidate)
+    return str(Path("C:/Models") / model_name / Path(*parts))
+
+
+SCORES_PATH   = _model_file("EvidenceScore", "results", "scores.csv")
+VERDICTS_PATH = _model_file("ActionableEvidence", "results", "verdicts.csv")
+GROUPS_PATH   = _model_file("TrustGate", "data", "review_groups.csv")
 
 
 # ---------------------------------------------------------------------------
