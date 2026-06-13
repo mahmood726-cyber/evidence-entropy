@@ -234,7 +234,20 @@ class TestPipelineIntegration(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """Load real data once for integration tests."""
+        """Load real data once for integration tests.
+
+        These tests require the external model artifacts (scores.csv,
+        verdicts.csv, review_groups.csv). When those files are absent
+        (e.g. on a machine without the C:\\Models corpus) the integration
+        tests skip rather than error — a missing data fixture is not a
+        unit-test failure.
+        """
+        if not (os.path.exists(SCORES_PATH)
+                and os.path.exists(VERDICTS_PATH)
+                and os.path.exists(GROUPS_PATH)):
+            raise unittest.SkipTest(
+                "external corpus not present (SCORES/VERDICTS/GROUPS paths missing)"
+            )
         cls.scores   = load_scores(SCORES_PATH)
         cls.verdicts = load_verdicts(VERDICTS_PATH)
         cls.groups   = load_review_groups(GROUPS_PATH)
